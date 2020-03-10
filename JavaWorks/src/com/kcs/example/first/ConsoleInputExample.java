@@ -1,5 +1,5 @@
-import java.io.Console;
-import java.util.InputMismatchException;
+package com.kcs.example.first;
+
 import java.util.Scanner;
 
 public class ConsoleInputExample {
@@ -7,7 +7,6 @@ public class ConsoleInputExample {
         Scanner sc = new Scanner(System.in);
         ConsoleInputExample example = new ConsoleInputExample();
         String a;
-        String b;
         do {
             a = sc.nextLine();
             example.printMethod(a);
