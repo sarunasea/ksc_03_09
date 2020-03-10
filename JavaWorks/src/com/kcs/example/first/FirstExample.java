@@ -6,7 +6,7 @@ public class FirstExample {
         FirstExample firstExample = new FirstExample();
         System.out.println(firstExample.sum(10, 10));
     }
-
+//ab
     private int sum(int a, int b) {
         return a + b;
     }
