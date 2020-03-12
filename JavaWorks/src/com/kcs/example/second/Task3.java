@@ -9,29 +9,29 @@ public class Task3 {
         Task3 task3 = new Task3();
         int select = -1;
         while (select != 0) {
-            System.out.println("Pasirinkite figūrą: ");
-            System.out.println("1. Statusis trikampis\n 2. Stačiakampis\n 3. Kvadratas\n 4. Apskritimas\n 0. Pabaiga");
-            select = getCorrectValue(sc);
-            switch (select) {
-                case 1:
-                    System.out.println("Įveskite trikampio statinių ilgius: ");
-                    triangle(sc);
-                    break;
-                case 2:
-                    System.out.println("Įveskite stačiakampio kraštinių ilgius: ");
-                    stac(sc);
-                    break;
-                case 3:
-                    System.out.println("Įveskite kvadrato kraštinių ilgius: ");
-                    kvad(sc);
-                    break;
-                case 4:
-                    System.out.println("Įveskite apskritimo spindulį: ");
-                    circ(sc);
-                    break;
-            }
+        System.out.println("Pasirinkite figūrą: ");
+        System.out.println("1. Statusis trikampis\n 2. Stačiakampis\n 3. Kvadratas\n 4. Apskritimas\n 0. Pabaiga");
+        select = getCorrectValue(sc);
+        switch (select) {
+            case 1:
+                System.out.println("Įveskite trikampio statinių ilgius: ");
+                triangle(sc);
+                break;
+            case 2:
+                System.out.println("Įveskite stačiakampio kraštinių ilgius: ");
+                stac(sc);
+                break;
+            case 3:
+                System.out.println("Įveskite kvadrato kraštinių ilgius: ");
+                kvad(sc);
+                break;
+            case 4:
+                System.out.println("Įveskite apskritimo spindulį: ");
+                circ(sc);
+                break;
         }
     }
+}
 
     private static void triangle(Scanner sc) {
         int a = getCorrectValue(sc);
