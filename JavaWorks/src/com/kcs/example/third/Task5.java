@@ -14,7 +14,7 @@ public class Task5 {
         double sanaudos = task5.vid(km, fuel);
         System.out.println("Kuro sanaudos: " + sanaudos + " l/100km");
     }
-    private double vid(int km, int fuel){
+    public double vid(int km, int fuel){
         return fuel*100/km;
     }
     private int getValue(Scanner sc){
