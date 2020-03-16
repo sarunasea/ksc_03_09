@@ -1,10 +1,9 @@
-package com.kcs.example.third;
+package com.kcs.example.testui;
 
-import java.lang.reflect.GenericDeclaration;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-public class Task6 {
+public class Testui1 {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         int end = -1;
@@ -13,66 +12,53 @@ public class Task6 {
                 System.out.println("Iveskite formule:");
                 String input = getValue(sc);
                 String[] elements = input.split(" ");
+                if(elements.length == 1){
+                    end = Integer.parseInt(input);
+                    if(end == 0){
+                        System.exit(0);
+                    }
+                }
+
                 double first = Double.parseDouble(elements[0]);
                 char symbol = elements[1].charAt(0);
                 double second = Double.parseDouble(elements[2]);
+                if(elements.length > 3){
+                    System.out.println("Per daug f-jos argumentų, veiksmai atliekami tik su pirmais 2 skaičiais".toUpperCase());
+                }
+                if(second == 0.0){
+                    System.out.println("Pakartokite įvedima (antras skaičius 0)");
+                    continue;
+                }
                 switch (symbol) {
                     case '+':
-                        plus(first, second);
+                        double sum = plus(first, second);
+                        System.out.println("Ats: " + sum);
                         break;
                     case '-':
-                        minus(first, second);
+                        double dec = minus(first, second);
+                        System.out.println("Ats: " + dec);
                         break;
-                    case '/':
-                        division(first, second);
-                        break;
-                    case '*':
-                        multi(first, second);
-                        break;
-                    case '^':
-                        degree(first, second);
-                        break;
-                    case '0':
-                        end = 0;
+                    default:
+                        System.out.println("Galimybės atlikti nurodytą veiksmą nenumatyta");
                 }
             } catch (InputMismatchException e) {
                 System.out.println("Tokio veiksmo nera galimybes atlikti");
-                getValue(sc);
+                continue;
             }
             catch (NumberFormatException f){
                 System.out.println("Neteisingas ivedimo formatas");
-                getValue(sc);
+                continue;
             }
             catch(ArrayIndexOutOfBoundsException z){
                 System.out.println("Per mazai f-jos argumentu");
-                getValue(sc);
+                continue;
             }
             System.out.println("Noredami baigti, spauskite 0");
         }
     }
 
-
-
-    private static void degree(double a, double b) {
-        System.out.println("Ats: " + Math.pow(a,b));
-    }
-
-    private static void minus(double a, double b) {
-        System.out.println("Ats: " + (a-b));
-    }
-
-    private static void multi(double a, double b) {
-        System.out.println("Ats: " + (a*b));
-    }
-
-    private static void division(double a, double b) {
-        try{
-        System.out.println("Ats: " + (a/b));
-        }
-        catch(NullPointerException n){
-            System.out.println("Dalyba iš nulio negalima");
-        }
-
+    private static double minus(double a, double b) {
+        return a-b;
     }
 
     private static String getValue(Scanner sc){
@@ -87,8 +73,8 @@ public class Task6 {
         }
         return value;
     }
-    private static void plus(double a, double b){
-        System.out.println("Ats: " + (a+b));
+    private static double plus(double a, double b){
+        return a+b;
     }
 
 }
