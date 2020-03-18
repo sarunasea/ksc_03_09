@@ -1,0 +1,6 @@
+car-automobilis
+dog-šuo
+bus-autobusas
+pc-kompiuteris
+keyboard-klaviatūra
+mouse-pelė
