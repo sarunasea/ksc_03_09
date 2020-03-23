@@ -16,6 +16,44 @@ public class StudentService {
     @Autowired
     private JdbcConnector jdbcConnector;
     private List<Student> students;
+
+    public Student updateStudent(Student student){
+        Connection connection = jdbcConnector.createConnection();
+        if(connection ==null){
+            return null;
+        }
+
+        try{
+            PreparedStatement preparedStatement = connection.prepareStatement("update students set name = ?, surname = ? phone = ?, email = ? where id = ?");
+            preparedStatement.setString(2, student.getSurname());
+            preparedStatement.setInt(3, student.getPhone());
+            preparedStatement.setString(4, student.getEmail());
+            preparedStatement.setString(1, student.getName());
+            preparedStatement.setInt(5, student.getId());
+            preparedStatement.execute();
+            return student;
+        }
+        catch(SQLException e){
+            System.out.println(e.getMessage());
+        }
+        return null;
+    }
+
+    public void deleteStudent(String studentID){
+        Connection connection = jdbcConnector.createConnection();
+        if(connection ==null){
+            return;
+        }
+
+        try{
+            PreparedStatement preparedStatement = connection.prepareStatement("delete from students where id=?");
+            preparedStatement.setInt(1, Integer.parseInt(studentID));
+            preparedStatement.execute();
+        }
+        catch(SQLException e){
+            System.out.println(e.getMessage());
+        }
+    }
     public Student createStudent(Student student){
         Connection connection = jdbcConnector.createConnection();
         if(connection ==null){
@@ -35,6 +73,7 @@ public class StudentService {
         catch(SQLException e){
             System.out.println(e.getMessage());
         }
+        return null;
     }
     public Student getStudent(String studentId){
 
@@ -73,9 +112,9 @@ public class StudentService {
                         resultSet.getString("email")));
             }
         }
-        catch (SQLException e){;
+        catch (SQLException e){
         }
-
+        return students;
 
     }
 }

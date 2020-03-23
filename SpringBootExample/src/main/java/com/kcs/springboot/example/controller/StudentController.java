@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@GetMapping("/students")
+@RequestMapping("/students")
 public class StudentController {
 
     private StudentService studentService;
@@ -34,5 +34,16 @@ public class StudentController {
     @PostMapping
     public Student save(@RequestBody Student student){
         return studentService.createStudent(student);
+    }
+
+    @DeleteMapping("/{studentID}/delete")
+    public void delete(@PathVariable ("studentID") String studentID){
+        studentService.deleteStudent(studentID);
+    }
+
+    @PutMapping("/{studentID}/update")
+    public Student update(@PathVariable("studentID") String studentID, @RequestBody Student student){
+        student.setId(Integer.parseInt(studentID));
+        return studentService.updateStudent(student);
     }
 }
